@@ -1,0 +1,4238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Bhayya ❤️</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#050505;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+.page{
+    display:none;
+    min-height:100vh;
+    width:100%;
+    padding:40px 20px;
+    position:relative;
+}
+
+.page.active{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    animation:pageIn .6s ease;
+}
+
+@keyframes pageIn{
+    from{
+        opacity:0;
+        transform:scale(1.03);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+button{
+    font-family:inherit;
+    cursor:pointer;
+}
+
+
+/* ================= COMMON BUTTONS ================= */
+
+.back-btn,
+.music-btn{
+    margin-top:30px;
+    padding:13px 25px;
+    border:1px solid #777;
+    border-radius:30px;
+    background:#ffffff12;
+    color:#fff;
+}
+
+.action-btn{
+    margin-top:20px;
+    padding:14px 28px;
+    border:0;
+    border-radius:30px;
+    background:linear-gradient(45deg,#ff1744,#ff4081);
+    color:#fff;
+    font-weight:bold;
+}
+
+
+/* ================= PAGE 1 ================= */
+
+#welcomePage{
+    background:
+        radial-gradient(
+            circle,
+            #5a001b,
+            #050505 80%
+        );
+    text-align:center;
+}
+
+.welcome-content{
+    position:relative;
+    z-index:10;
+}
+
+.welcome-small{
+    color:#ffb6c9;
+    letter-spacing:5px;
+    font-size:19px;
+}
+
+.welcome-title{
+    font-size:clamp(45px,9vw,100px);
+    color:#ff1744;
+    text-shadow:
+        0 0 10px #ff1744,
+        0 0 30px #ff1744,
+        0 0 60px #ff1744;
+    margin:20px 0;
+}
+
+.welcome-subtitle{
+    color:#ccc;
+    font-size:clamp(16px,3vw,23px);
+}
+
+.enter-btn{
+    margin-top:40px;
+    padding:18px 48px;
+    border:0;
+    border-radius:50px;
+    background:
+        linear-gradient(
+            45deg,
+            #ff1744,
+            #ff4081
+        );
+    color:#fff;
+    font-size:21px;
+    font-weight:bold;
+    box-shadow:
+        0 0 30px #ff174455;
+}
+
+
+/* ================= DON'T CLICK ================= */
+
+.dont-click{
+    position:fixed;
+    left:25px;
+    bottom:25px;
+    z-index:500;
+
+    padding:12px 20px;
+
+    border:2px solid #fff;
+    border-radius:30px;
+
+    background:#111;
+    color:#fff;
+
+    font-weight:bold;
+}
+
+.dont-click.shake{
+    animation:shake .35s;
+}
+
+@keyframes shake{
+
+    0%,100%{
+        transform:translateX(0);
+    }
+
+    25%{
+        transform:
+            translateX(-8px)
+            rotate(-3deg);
+    }
+
+    50%{
+        transform:
+            translateX(8px)
+            rotate(3deg);
+    }
+
+    75%{
+        transform:
+            translateX(-8px)
+            rotate(-3deg);
+    }
+}
+
+
+/* ================= TOAST ================= */
+
+.toast{
+    position:fixed;
+
+    left:50%;
+    top:20px;
+
+    z-index:10000;
+
+    transform:
+        translate(-50%,-100px);
+
+    opacity:0;
+
+    background:#161616;
+
+    border:
+        2px solid #ff4081;
+
+    border-radius:30px;
+
+    padding:
+        14px 24px;
+
+    font-weight:bold;
+
+    transition:.35s;
+}
+
+.toast.show{
+    transform:
+        translate(-50%,0);
+
+    opacity:1;
+}
+
+
+/* ================= FIREWORKS ================= */
+
+.firework{
+    position:fixed;
+
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    z-index:9999;
+
+    pointer-events:none;
+
+    animation:
+        explode 1.2s forwards;
+}
+
+@keyframes explode{
+
+    to{
+        transform:
+            translate(
+                var(--tx),
+                var(--ty)
+            );
+
+        opacity:0;
+    }
+}
+
+
+/* ================= PAGE 2 MENU ================= */
+
+#menuPage{
+    background:
+        radial-gradient(
+            circle at top,
+            #430021,
+            #050505 80%
+        );
+}
+
+.menu-title,
+.page-title{
+
+    color:#ff4081;
+
+    text-align:center;
+
+    text-shadow:
+        0 0 25px
+        #ff408155;
+
+    margin-bottom:15px;
+}
+
+.menu-title{
+    font-size:
+        clamp(35px,7vw,70px);
+}
+
+.menu-subtitle{
+    color:#bbb;
+
+    margin-bottom:35px;
+
+    text-align:center;
+}
+
+.menu-grid{
+
+    width:min(900px,95%);
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:20px;
+}
+
+.menu-card{
+
+    min-height:150px;
+
+    border:
+        1px solid
+        #ff408188;
+
+    border-radius:25px;
+
+    background:#ffffff0d;
+
+    color:#fff;
+
+    padding:22px;
+
+    font-size:18px;
+
+    transition:.3s;
+}
+
+.menu-card:hover{
+
+    transform:
+        translateY(-6px);
+
+    box-shadow:
+        0 0 25px
+        #ff408133;
+}
+
+.menu-emoji{
+
+    display:block;
+
+    font-size:46px;
+
+    margin-bottom:12px;
+}
+
+
+/* ================= PICK A SURPRISE ================= */
+
+#surprisePage{
+
+    background:
+        radial-gradient(
+            circle,
+            #38001e,
+            #050505 75%
+        );
+}
+
+.page-title{
+
+    font-size:
+        clamp(38px,7vw,65px);
+}
+
+.surprise-grid{
+
+    width:min(900px,95%);
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:24px;
+}
+
+.flip-card{
+
+    height:270px;
+
+    perspective:1000px;
+}
+
+.flip-inner{
+
+    height:100%;
+
+    position:relative;
+
+    transform-style:
+        preserve-3d;
+
+    transition:.7s;
+}
+
+.flip-card.flipped
+.flip-inner{
+
+    transform:
+        rotateY(180deg);
+}
+
+.flip-front,
+.flip-back{
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:25px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:25px;
+
+    backface-visibility:hidden;
+}
+
+.flip-front{
+
+    background:
+        linear-gradient(
+            135deg,
+            #8b0048,
+            #250014
+        );
+
+    border:
+        2px solid #ff4081;
+
+    font-size:55px;
+}
+
+.flip-back{
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff1744,
+            #990049
+        );
+
+    transform:
+        rotateY(180deg);
+
+    font-size:20px;
+
+    line-height:1.6;
+}
+
+
+/* ================= MEMORY GAME ================= */
+
+#gamePage{
+
+    background:
+        radial-gradient(
+            circle,
+            #00233a,
+            #030609 75%
+        );
+}
+
+.game-info{
+
+    text-align:center;
+
+    color:#ccc;
+}
+
+.moves-counter{
+
+    color:#ff4081;
+
+    font-weight:bold;
+
+    margin-top:6px;
+}
+
+.game-board{
+
+    width:min(520px,95vw);
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:12px;
+
+    margin:25px auto;
+}
+
+.memory-card{
+
+    aspect-ratio:1;
+
+    border:0;
+
+    background:none;
+
+    padding:0;
+
+    perspective:900px;
+}
+
+.memory-inner{
+
+    position:relative;
+
+    width:100%;
+    height:100%;
+
+    transform-style:
+        preserve-3d;
+
+    transition:.55s;
+}
+
+.memory-card.flipped
+.memory-inner{
+
+    transform:
+        rotateY(180deg);
+}
+
+.memory-front,
+.memory-back{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:16px;
+
+    backface-visibility:hidden;
+}
+
+.memory-front{
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff1744,
+            #73002d
+        );
+
+    border:
+        2px solid #ff668d;
+
+    font-size:34px;
+}
+
+.memory-back{
+
+    background:#171717;
+
+    border:
+        2px solid #ff4081;
+
+    transform:
+        rotateY(180deg);
+
+    font-size:
+        clamp(
+            28px,
+            6vw,
+            45px
+        );
+}
+
+.memory-card.matched
+.memory-back{
+
+    border-color:#4caf50;
+
+    box-shadow:
+        0 0 20px
+        #4caf5066;
+}
+
+.game-message{
+
+    min-height:30px;
+
+    text-align:center;
+
+    color:#ffb6c9;
+}
+
+
+/* ================= MEMORY LANE ================= */
+
+#memoryPage{
+
+    background:
+        linear-gradient(
+            #16000d,
+            #050505,
+            #16000d
+        );
+
+    padding-top:70px;
+
+    padding-bottom:80px;
+}
+
+#memoryPage.active{
+
+    display:block;
+
+    animation:
+        pageIn .6s ease;
+}
+
+.timeline-heading{
+
+    text-align:center;
+}
+
+.timeline-heading h1{
+
+    font-size:
+        clamp(
+            40px,
+            7vw,
+            70px
+        );
+
+    color:#ff4081;
+}
+
+.timeline-heading p{
+
+    color:#bbb;
+
+    margin-top:10px;
+}
+
+
+/* ================= COUNTER ================= */
+
+.age-counter{
+
+    width:
+        min(950px,95%);
+
+    margin:
+        30px auto 65px;
+
+    padding:24px;
+
+    border-radius:25px;
+
+    background:#ffffff0d;
+
+    border:
+        1px solid
+        #ff408155;
+}
+
+.age-counter h2{
+
+    text-align:center;
+
+    color:#ffb6c9;
+
+    margin-bottom:20px;
+}
+
+.counter-boxes{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(5,1fr);
+
+    gap:10px;
+}
+
+.counter-item{
+
+    padding:18px 5px;
+
+    border-radius:15px;
+
+    background:#ffffff0d;
+
+    text-align:center;
+}
+
+.counter-number{
+
+    display:block;
+
+    font-size:28px;
+
+    color:#ff4081;
+
+    font-weight:bold;
+}
+
+.counter-label{
+
+    font-size:12px;
+
+    color:#aaa;
+}
+
+
+/* ================= TIMELINE ================= */
+
+.timeline{
+
+    width:
+        min(1050px,95%);
+
+    margin:auto;
+
+    position:relative;
+}
+
+.timeline:before{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    top:0;
+    bottom:0;
+
+    width:4px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        linear-gradient(
+            transparent,
+            #ff4081,
+            #ff1744,
+            #ff4081,
+            transparent
+        );
+}
+
+.birth-marker{
+
+    position:relative;
+
+    z-index:2;
+
+    width:200px;
+
+    margin:
+        0 auto 60px;
+
+    padding:15px;
+
+    border-radius:50px;
+
+    text-align:center;
+
+    background:#ff1744;
+
+    box-shadow:
+        0 0 30px
+        #ff174466;
+}
+
+.timeline-item{
+
+    width:50%;
+
+    position:relative;
+
+    padding:
+        20px 50px;
+}
+
+.timeline-item.left{
+
+    left:0;
+
+    text-align:right;
+}
+
+.timeline-item.right{
+
+    left:50%;
+
+    text-align:left;
+}
+
+.timeline-dot{
+
+    position:absolute;
+
+    top:45px;
+
+    width:22px;
+
+    height:22px;
+
+    border-radius:50%;
+
+    background:#ff4081;
+
+    border:
+        4px solid
+        #130009;
+
+    box-shadow:
+        0 0 18px #ff4081;
+
+    z-index:2;
+}
+
+.left .timeline-dot{
+
+    right:-11px;
+}
+
+.right .timeline-dot{
+
+    left:-11px;
+}
+
+.timeline-content{
+
+    display:inline-block;
+
+    width:
+        min(400px,100%);
+
+    padding:20px;
+
+    border-radius:25px;
+
+    background:#ffffff0d;
+
+    border:
+        1px solid
+        #ff408166;
+}
+
+.timeline-year{
+
+    display:inline-block;
+
+    padding:
+        6px 15px;
+
+    border-radius:20px;
+
+    background:#ff1744;
+
+    font-weight:bold;
+
+    margin-bottom:12px;
+}
+
+.timeline-content h3{
+
+    color:#ffb6c9;
+
+    margin-bottom:12px;
+}
+
+.timeline-content img{
+
+    width:100%;
+
+    max-height:350px;
+
+    object-fit:cover;
+
+    border-radius:17px;
+
+    margin-bottom:10px;
+}
+
+.timeline-content p{
+
+    color:#ccc;
+
+    line-height:1.5;
+}
+
+
+/* ================= SECRET MESSAGE ================= */
+
+#secretPage{
+
+    background:
+        radial-gradient(
+            circle,
+            #280021,
+            #050505 75%
+        );
+}
+
+.password-box,
+.secret-message{
+
+    width:
+        min(850px,95%);
+
+    padding:32px;
+
+    border-radius:30px;
+
+    background:#ffffff0d;
+
+    border:
+        1px solid
+        #ff408166;
+
+    text-align:center;
+}
+
+.password-box{
+
+    width:
+        min(500px,95%);
+}
+
+.password-box p{
+
+    color:#aaa;
+
+    margin-bottom:15px;
+}
+
+.password-input{
+
+    width:100%;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    border:
+        1px solid #555;
+
+    background:#111;
+
+    color:#fff;
+
+    font-size:17px;
+}
+
+.password-error{
+
+    min-height:25px;
+
+    color:#ff6b8a;
+
+    margin-top:12px;
+}
+
+.secret-message{
+
+    display:none;
+
+    font-size:
+        clamp(19px,3vw,27px);
+
+    line-height:1.8;
+}
+
+.secret-message.show{
+
+    display:block;
+}
+
+
+/* ================= DO YOU KNOW ================= */
+
+#factsPage{
+
+    background:
+        radial-gradient(
+            circle,
+            #1d0035,
+            #040006 75%
+        );
+}
+
+
+/*
+   Main box
+*/
+
+.fact-box{
+
+    width:
+        min(850px,95%);
+
+    padding:38px;
+
+    border-radius:30px;
+
+    background:#ffffff0d;
+
+    border:
+        1px solid
+        #ff408166;
+
+    line-height:1.9;
+
+    font-size:
+        clamp(18px,3vw,24px);
+
+    text-align:center;
+
+    overflow:hidden;
+}
+
+
+/*
+   Highlighted text
+*/
+
+.fact-box strong{
+
+    color:#ff6b9b;
+}
+
+
+/*
+   Each sentence starts invisible
+*/
+
+.fact-line{
+
+    opacity:0;
+
+    transform:
+        translateY(25px);
+
+    filter:blur(6px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease,
+        filter .7s ease;
+
+    margin-bottom:18px;
+}
+
+
+/*
+   When JS adds visible class
+*/
+
+.fact-line.visible{
+
+    opacity:1;
+
+    transform:
+        translateY(0);
+
+    filter:blur(0);
+}
+
+
+/*
+   Final lines slightly bigger
+*/
+
+.fact-line.highlight{
+
+    font-size:1.08em;
+}
+
+
+/*
+   Progress number
+*/
+
+.fact-progress{
+
+    color:#ffb6c9;
+
+    font-size:14px;
+
+    margin-top:12px;
+
+    min-height:20px;
+}
+
+
+/* ================= FINAL SURPRISE ================= */
+
+#finalPage{
+
+    background:
+        radial-gradient(
+            circle,
+            #5b001d,
+            #170006 50%,
+            #020202
+        );
+
+    overflow:hidden;
+}
+
+.final-stage{
+
+    min-height:500px;
+
+    width:
+        min(950px,95%);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+}
+
+.final-message{
+
+    font-size:
+        clamp(24px,5vw,60px);
+
+    line-height:1.5;
+}
+
+.small{
+
+    display:block;
+
+    font-size:
+        clamp(18px,3vw,28px);
+
+    color:#ffb6c9;
+}
+
+.name{
+
+    display:block;
+
+    color:#ff4081;
+
+    font-weight:900;
+}
+
+.birthday{
+
+    display:block;
+
+    font-size:
+        clamp(35px,7vw,80px);
+
+    color:#ff1744;
+
+    font-weight:900;
+
+    text-shadow:
+        0 0 30px #ff1744;
+}
+
+
+/* ================= REWARD ================= */
+
+#rewardPage{
+
+    background:
+        radial-gradient(
+            circle,
+            #003c29,
+            #030706 75%
+        );
+}
+
+.reward-title{
+
+    color:#7cffae;
+
+    font-size:
+        clamp(35px,6vw,60px);
+
+    margin-bottom:20px;
+}
+
+.reward-box{
+
+    width:
+        min(700px,95%);
+
+    padding:30px;
+
+    border-radius:30px;
+
+    background:#ffffff0d;
+
+    border:
+        1px solid
+        #4caf5088;
+
+    text-align:center;
+}
+
+.reward-box img{
+
+    width:100%;
+
+    max-width:450px;
+
+    border-radius:25px;
+
+    margin-top:20px;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:700px){
+
+    .menu-grid,
+    .surprise-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .counter-boxes{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .timeline:before{
+
+        left:20px;
+
+        transform:none;
+    }
+
+    .timeline-item,
+    .timeline-item.left,
+    .timeline-item.right{
+
+        width:100%;
+
+        left:0;
+
+        padding:
+            20px 10px 20px 60px;
+
+        text-align:left;
+    }
+
+    .left .timeline-dot,
+    .right .timeline-dot{
+
+        left:9px;
+
+        right:auto;
+    }
+
+    .game-board{
+
+        gap:8px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     TOAST MESSAGE
+========================================================= -->
+
+<div id="toast" class="toast"></div>
+
+
+
+<!-- =========================================================
+     PAGE 1 - WELCOME
+========================================================= -->
+
+<section
+    id="welcomePage"
+    class="page active">
+
+
+    <div class="welcome-content">
+
+
+        <div class="welcome-small">
+            A SPECIAL DAY ✨
+        </div>
+
+
+        <h1 class="welcome-title">
+            HAPPY BIRTHDAY ❤️
+        </h1>
+
+
+        <p class="welcome-subtitle">
+            Something special has been created just for you...
+        </p>
+
+
+        <button
+            class="enter-btn"
+            onclick="openPage('menuPage')">
+
+            TAP TO ENTER ✨
+
+        </button>
+
+    </div>
+
+
+
+    <!-- DON'T CLICK -->
+
+    <button
+        id="dontClick"
+        class="dont-click"
+        onclick="dontClick()">
+
+        DON'T CLICK 😈
+
+    </button>
+
+</section>
+
+
+
+<!-- =========================================================
+     PAGE 2 - MAIN MENU
+========================================================= -->
+
+<section
+    id="menuPage"
+    class="page">
+
+
+    <h1 class="menu-title">
+
+        🎉 WELCOME TO YOUR BIRTHDAY 🎉
+
+    </h1>
+
+
+    <p class="menu-subtitle">
+
+        Choose your surprise...
+
+    </p>
+
+
+    <div class="menu-grid">
+
+
+        <!-- SURPRISE -->
+
+        <button
+            class="menu-card"
+            onclick="openPage('surprisePage')">
+
+            <span class="menu-emoji">
+                🎁
+            </span>
+
+            <b>
+                Pick a Surprise
+            </b>
+
+            <br><br>
+
+            Open the mystery cards
+
+        </button>
+
+
+        <!-- GAME -->
+
+        <button
+            class="menu-card"
+            onclick="openPage('gamePage')">
+
+            <span class="menu-emoji">
+                🎮
+            </span>
+
+            <b>
+                Memory Game
+            </b>
+
+            <br><br>
+
+            Match the birthday pairs
+
+        </button>
+
+
+        <!-- MEMORY LANE -->
+
+        <button
+            class="menu-card"
+            onclick="openPage('memoryPage')">
+
+            <span class="menu-emoji">
+                📸
+            </span>
+
+            <b>
+                Memory Lane
+            </b>
+
+            <br><br>
+
+            Travel through 23 years
+
+        </button>
+
+
+        <!-- SECRET -->
+
+        <button
+            class="menu-card"
+            onclick="openPage('secretPage')">
+
+            <span class="menu-emoji">
+                🔐
+            </span>
+
+            <b>
+                Secret Message
+            </b>
+
+            <br><br>
+
+            Unlock a special message
+
+        </button>
+
+
+        <!-- DO YOU KNOW -->
+
+        <button
+            class="menu-card"
+            onclick="openPage('factsPage')">
+
+            <span class="menu-emoji">
+                🤔
+            </span>
+
+            <b>
+                Do You Know?
+            </b>
+
+            <br><br>
+
+            Watch the story appear
+
+        </button>
+
+
+        <!-- FINAL -->
+
+        <button
+            class="menu-card"
+            onclick="openPage('finalPage')">
+
+            <span class="menu-emoji">
+                🎂
+            </span>
+
+            <b>
+                Final Surprise
+            </b>
+
+            <br><br>
+
+            The final reveal
+
+        </button>
+
+    </div>
+
+
+    <button
+        id="musicButton"
+        class="music-btn"
+        onclick="toggleMusic()">
+
+        🎵 Play Birthday Music
+
+    </button>
+
+</section>
+
+
+
+<!-- =========================================================
+     PAGE 3 - PICK A SURPRISE
+========================================================= -->
+
+<section
+    id="surprisePage"
+    class="page">
+
+
+    <h1 class="page-title">
+
+        🎁 PICK A SURPRISE
+
+    </h1>
+
+
+    <p style="
+        color:#bbb;
+        margin-bottom:30px;
+    ">
+
+        Tap a card to reveal your surprise...
+
+    </p>
+
+
+    <div class="surprise-grid">
+
+
+        <div
+            class="flip-card"
+            onclick="this.classList.toggle('flipped')">
+
+            <div class="flip-inner">
+
+                <div class="flip-front">
+                    🎁
+                </div>
+
+                <div class="flip-back">
+
+                    😂
+
+                    <br><br>
+
+                    Unlimited teasing
+                    from your sister!
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div
+            class="flip-card"
+            onclick="this.classList.toggle('flipped')">
+
+            <div class="flip-inner">
+
+                <div class="flip-front">
+                    🎉
+                </div>
+
+                <div class="flip-back">
+
+                    ❤️
+
+                    <br><br>
+
+                    You are one of the
+                    most special people
+                    in my life!
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div
+            class="flip-card"
+            onclick="this.classList.toggle('flipped')">
+
+            <div class="flip-inner">
+
+                <div class="flip-front">
+                    🎂
+                </div>
+
+                <div class="flip-back">
+
+                    🥳
+
+                    <br><br>
+
+                    Birthday rule:
+
+                    <br>
+
+                    YOU HAVE TO ENJOY TODAY!
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <button
+        class="back-btn"
+        onclick="openPage('menuPage')">
+
+        ← BACK TO MENU
+
+    </button>
+
+</section>
+
+
+
+<!-- =========================================================
+     PAGE 4 - REAL MEMORY GAME
+========================================================= -->
+
+<section
+    id="gamePage"
+    class="page">
+
+
+    <h1 class="page-title">
+
+        🎮 MEMORY GAME
+
+    </h1>
+
+
+    <p class="game-info">
+
+        Turn the cards and find all 8 matching pairs! 🧠
+
+    </p>
+
+
+    <p
+        id="gameStatus"
+        class="moves-counter">
+
+        Matches: 0 / 8
+
+    </p>
+
+
+    <p
+        id="movesCounter"
+        class="moves-counter">
+
+        Moves: 0
+
+    </p>
+
+
+    <div
+        id="gameBoard"
+        class="game-board">
+    </div>
+
+
+    <div
+        id="gameMessage"
+        class="game-message">
+
+        Tap any card to begin! 👆
+
+    </div>
+
+
+    <button
+        class="action-btn"
+        onclick="startGame()">
+
+        🔄 RESTART GAME
+
+    </button>
+
+
+    <button
+        class="back-btn"
+        onclick="openPage('menuPage')">
+
+        ← BACK TO MENU
+
+    </button>
+
+</section>
+
+
+
+<!-- =========================================================
+     PAGE 5 - MEMORY LANE
+========================================================= -->
+
+<section
+    id="memoryPage"
+    class="page">
+
+
+    <div class="timeline-heading">
+
+
+        <h1>
+            📸 MEMORY LANE
+        </h1>
+
+
+        <p>
+            23 years • 23 memories • one amazing journey ❤️
+        </p>
+
+
+    </div>
+
+
+
+    <!-- LIVE COUNTER -->
+
+    <div class="age-counter">
+
+
+        <h2>
+            ⏳ TIME SINCE HIS BIRTH
+        </h2>
+
+
+        <div class="counter-boxes">
+
+
+            <div class="counter-item">
+
+                <span
+                    id="years"
+                    class="counter-number">
+
+                    0
+
+                </span>
+
+                <span class="counter-label">
+                    YEARS
+                </span>
+
+            </div>
+
+
+            <div class="counter-item">
+
+                <span
+                    id="months"
+                    class="counter-number">
+
+                    0
+
+                </span>
+
+                <span class="counter-label">
+                    MONTHS
+                </span>
+
+            </div>
+
+
+            <div class="counter-item">
+
+                <span
+                    id="days"
+                    class="counter-number">
+
+                    0
+
+                </span>
+
+                <span class="counter-label">
+                    DAYS
+                </span>
+
+            </div>
+
+
+            <div class="counter-item">
+
+                <span
+                    id="minutes"
+                    class="counter-number">
+
+                    0
+
+                </span>
+
+                <span class="counter-label">
+                    MINUTES
+                </span>
+
+            </div>
+
+
+            <div class="counter-item">
+
+                <span
+                    id="seconds"
+                    class="counter-number">
+
+                    0
+
+                </span>
+
+                <span class="counter-label">
+                    SECONDS
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- REAL CHRONOLOGICAL TIMELINE -->
+
+    <div class="timeline">
+
+
+        <div class="birth-marker">
+
+            🎂 BORN
+
+            <br>
+
+            21 SEPTEMBER 2003
+
+        </div>
+
+
+
+        <div class="timeline-item left">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <span class="timeline-year">
+                    AGE 1 • 2004
+                </span>
+
+                <h3>
+                    The Beginning 👶
+                </h3>
+
+                <img
+                    src="photo1.jpeg"
+                    alt="Age 1 memory">
+
+                <p>
+                    The first chapter of an amazing life began.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="timeline-item right">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <span class="timeline-year">
+                    AGE 2 • 2005
+                </span>
+
+                <h3>
+                    Little Explorer 🧸
+                </h3>
+
+                <img
+                    src="photo2.jpeg"
+                    alt="Age 2 memory">
+
+                <p>
+                    Another year, another beautiful memory.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="timeline-item left">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <span class="timeline-year">
+                    AGE 3 • 2006
+                </span>
+
+                <h3>
+                    Growing Up 🌱
+                </h3>
+
+                <img
+                    src="photo3.jpeg"
+                    alt="Age 3 memory">
+
+                <p>
+                    Three years of smiles and little adventures.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="timeline-item right">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <span class="timeline-year">
+                    AGE 4 • 2007
+                </span>
+
+                <h3>
+                    More Memories 🎈
+                </h3>
+
+                <img
+                    src="photo4.jpeg"
+                    alt="Age 4 memory">
+
+                <p>
+                    Childhood memories started filling the album.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="timeline-item left">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <span class="timeline-year">
+                    AGE 5 • 2008
+                </span>
+
+                <h3>
+                    Childhood Days ⭐
+                </h3>
+
+                <img
+                    src="photo5.jpeg"
+                    alt="Age 5 memory">
+
+                <p>
+                    Five years of smiles and memories.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="timeline-item right">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <span class="timeline-year">
+                    AGE 6 • 2009
+                </span>
+
+                <h3>
+                    Little Memories ❤️
+                </h3>
+
+                <img
+                    src="photo6.jpeg"
+                    alt="Age 6 memory">
+
+                <p>
+                    Another beautiful chapter.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="timeline-item left">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <span class="timeline-year">
+                    AGE 7 • 2010
+                </span>
+
+                <h3>
+                    Growing Bigger 😄
+                </h3>
+
+                <img
+                    src="photo7.jpeg"
+                    alt="Age 7 memory">
+
+                <p>
+                    Seven years and countless moments.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="timeline-item right">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <span class="timeline-year">
+                    AGE 8 • 2011
+                </span>
+
+                <h3>
+                    Adventures Begin 🚀
+                </h3>
+
+                <img
+                    src="photo8.jpeg"
+                    alt="Age 8 memory">
+
+                <p>
+                    Growing up one memory at a time.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="timeline-item left">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <span class="timeline-year">
+                    AGE 9 • 2012
+                </span>
+
+                <h3>
+                    Almost a Teen 🎮
+                </h3>
+
+                <img
+                    src="photo9.jpeg"
+                    alt="Age 9 memory">
+
+                <p>
+                    Nine years of laughter and unforgettable moments.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="timeline-item right">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <span class="timeline-year">
+                    AGE 10 • 2013
+                </span>
+
+                <h3>
+                    Double Digits 🎉
+                </h3>
+
+                <img
+                    src="photo10.jpeg"
+                    alt="Age 10 memory">
+
+                <p>
+                    Ten years already!
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="timeline-item left">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <span class="timeline-year">
+                    AGE 11 • 2014
+                </span>
+
+                <h3>
+                    More Adventures 🌟
+                </h3>
+
+                <img
+                    src="photo11.jpeg"
+                    alt="Age 11 memory">
+
+                <p>
+                    Another year added to the story.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="timeline-item right">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <span class="timeline-year">
+                    AGE 12 • 2015
+                </span>
+
+                <h3>
+                    Growing Up ✨
+                </h3>
+
+                <img
+                    src="photo12.jpeg"
+                    alt="Age 12 memory">
+
+                <p>
+                    Twelve years of memories.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="timeline-item left">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <span class="timeline-year">
+                    AGE 13 • 2016
+                </span>
+
+                <h3>
+                    Teenage Chapter 😎
+                </h3>
+
+                <img
+                    src="photo13.jpeg"
+                    alt="Age 13 memory">
+
+                <p>
+                    A whole new chapter began.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="timeline-item right">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <span class="timeline-year">
+                    AGE 14 • 2017
+                </span>
+
+                <h3>
+                    More Memories ❤️
+                </h3>
+
+                <img
+                    src="photo14.jpeg"
+                    alt="Age 14 memory">
+
+                <p>
+                    Another year, another story.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="timeline-item left">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <span class="timeline-year">
+                    AGE 15 • 2018
+                </span>
+
+                <h3>
+                    Fifteen! 🎂
+                </h3>
+
+                <img
+                    src="photo15.jpeg"
+                    alt="Age 15 memory">
+
+                <p>
+                    Fifteen years of memories.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="timeline-item right">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <span class="timeline-year">
+                    AGE 16 • 2019
+                </span>
+
+                <h3>
+                    Another Chapter 📖
+                </h3>
+
+                <img
+                    src="photo16.jpeg"
+                    alt="Age 16 memory">
+
+                <p>
+                    Sixteen years and still creating memories.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="timeline-item left">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <span class="timeline-year">
+                    AGE 17 • 2020
+                </span>
+
+                <h3>
+                    Seventeen ✨
+                </h3>
+
+                <img
+                    src="photo17.jpeg"
+                    alt="Age 17 memory">
+
+                <p>
+                    The journey kept moving forward.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="timeline-item right">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <span class="timeline-year">
+                    AGE 18 • 2021
+                </span>
+
+                <h3>
+                    Eighteen 🎉
+                </h3>
+
+                <img
+                    src="photo18.jpeg"
+                    alt="Age 18 memory">
+
+                <p>
+                    A new stage and a new chapter.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="timeline-item left">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <span class="timeline-year">
+                    AGE 19 • 2022
+                </span>
+
+                <h3>
+                    Nineteen ❤️
+                </h3>
+
+                <img
+                    src="photo19.jpeg"
+                    alt="Age 19 memory">
+
+                <p>
+                    Nineteen years of memories.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="timeline-item right">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <span class="timeline-year">
+                    AGE 20 • 2023
+                </span>
+
+                <h3>
+                    Twenty 🎊
+                </h3>
+
+                <img
+                    src="photo20.jpeg"
+                    alt="Age 20 memory">
+
+                <p>
+                    Twenty years of an incredible journey.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="timeline-item left">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <span class="timeline-year">
+                    AGE 21 • 2024
+                </span>
+
+                <h3>
+                    Twenty-One 🌟
+                </h3>
+
+                <img
+                    src="photo21.jpeg"
+                    alt="Age 21 memory">
+
+                <p>
+                    More memories, more laughter, more moments.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="timeline-item right">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <span class="timeline-year">
+                    AGE 22 • 2025
+                </span>
+
+                <h3>
+                    Twenty-Two ❤️
+                </h3>
+
+                <img
+                    src="photo22.jpeg"
+                    alt="Age 22 memory">
+
+                <p>
+                    One more beautiful year added to the story.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="timeline-item left">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <span class="timeline-year">
+                    AGE 23 • 2026
+                </span>
+
+                <h3>
+                    TODAY 🎂
+                </h3>
+
+                <img
+                    src="photo23.jpeg"
+                    alt="Age 23 memory">
+
+                <p>
+                    And here we are... celebrating another amazing year! ❤️
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <button
+        class="back-btn"
+        onclick="openPage('menuPage')">
+
+        ← BACK TO MENU
+
+    </button>
+
+</section>
+
+
+
+<!-- =========================================================
+     PAGE 6 - SECRET MESSAGE
+========================================================= -->
+
+<section
+    id="secretPage"
+    class="page">
+
+
+    <h1 class="page-title">
+
+        🔐 SECRET MESSAGE
+
+    </h1>
+
+
+    <div
+        id="passwordSection"
+        class="password-box">
+
+
+        <p>
+            This message is protected. 🤫
+        </p>
+
+
+        <p>
+            Enter the secret password:
+        </p>
+
+
+        <input
+            id="passwordInput"
+            class="password-input"
+            type="password"
+            placeholder="Enter password">
+
+
+        <button
+            class="action-btn"
+            onclick="unlockSecret()">
+
+            🔓 UNLOCK
+
+        </button>
+
+
+        <div
+            id="passwordError"
+            class="password-error">
+        </div>
+
+
+    </div>
+
+
+
+    <div
+        id="secretMessage"
+        class="secret-message">
+
+        Happy Birthday, bhayya! 🎂😂
+
+        Another year older, but don't worry… 
+		you're still not getting any wiser! 🤣
+<br><br>
+        Thanks for being my partner in crime, my personal headache, and sometimes my emergency support system. 😂❤️
+		May Allah bless you with lots of happiness, success, money, and the patience to deal with me! 🤲🤣
+<br><br>
+        Enjoy your day, legend! 🥳🔥❤️
+
+        Life is better knowing that I have a brother like you by my side.
+		No matter how much we fight or argue, you’ll always have a special place in my heart. 
+		I’m truly grateful for all the memories we’ve shared and for having you in my life.
+<br><br>
+        May Allah bless you with a beautiful life, protect you from every difficulty, 
+		and give you success in everything you do. 🤲❤️
+
+        Stay blessed, stay happy, and keep shining. Happy Birthday, bro! 🎂🥳
+
+        You are not just my brother,
+        you are one of the most special people
+        in my life. ❤️
+
+        <br><br>
+
+        Thank you for all the memories,
+        the laughter,
+        the fights,
+        the teasing
+        and every little moment.
+
+        <br><br>
+
+        No matter how much we fight,
+        you will always be my Bhayya. ❤️
+
+        <br><br>
+
+        Today is your special day,
+        and I hope it becomes a memory
+        you always remember.
+
+        <br><br>
+
+        <b>
+            HAPPY BIRTHDAY ONCE AGAIN! 🎂❤️
+        </b>
+
+
+    </div>
+
+
+
+    <button
+        class="back-btn"
+        onclick="openPage('menuPage')">
+
+        ← BACK TO MENU
+
+    </button>
+
+</section>
+
+
+
+<!-- =========================================================
+     PAGE 7 - DO YOU KNOW
+========================================================= -->
+
+<section
+    id="factsPage"
+    class="page">
+
+
+    <h1 class="page-title">
+
+        🤔 DO YOU KNOW?
+
+    </h1>
+
+
+    <div class="fact-box">
+
+
+        <div class="fact-line">
+
+            A boy was born on
+            <strong>
+                21st September 2003.
+            </strong>
+            🎂
+
+        </div>
+
+
+        <div class="fact-line">
+
+            He was named
+            <strong>
+                S.M ALTHAF JAN.
+            </strong>
+            ❤️
+
+        </div>
+
+
+        <div class="fact-line">
+
+            That day wasn't just
+            an ordinary day... ✨
+
+        </div>
+
+
+        <div class="fact-line">
+
+            It was the day a special person
+            entered this world. 🌎❤️
+
+        </div>
+
+
+        <div class="fact-line">
+
+            A little boy who would grow up,
+            make countless memories,
+            create lots of laughter,
+            and become an important part
+            of his family's life. 🥰
+
+        </div>
+
+
+        <div class="fact-line">
+
+            Years passed,
+            and that little boy grew up...
+
+        </div>
+
+
+        <div class="fact-line">
+
+            But one thing never changed. ❤️
+
+        </div>
+
+
+        <div class="fact-line">
+
+            He can still make everyone smile,
+            annoy everyone at least once,
+            and somehow make every moment memorable. 😂❤️
+
+        </div>
+
+
+        <div class="fact-line highlight">
+
+            <strong>
+                AND TODAY,
+                WE ARE CELEBRATING HIM! 🎉
+            </strong>
+
+        </div>
+
+
+        <div class="fact-line highlight">
+
+            <strong>
+                HAPPY BIRTHDAY,
+                S.M ALTHAF JAN! 🎂🎈
+            </strong>
+
+        </div>
+
+
+        <div
+            id="factProgress"
+            class="fact-progress">
+        </div>
+
+
+    </div>
+
+
+
+    <button
+        class="back-btn"
+        onclick="openPage('menuPage')">
+
+        ← BACK TO MENU
+
+    </button>
+
+</section>
+
+
+
+<!-- =========================================================
+     PAGE 8 - FINAL SURPRISE
+========================================================= -->
+
+<section
+    id="finalPage"
+    class="page">
+
+
+    <h1 class="page-title">
+
+        🎂 FINAL SURPRISE
+
+    </h1>
+
+
+    <div class="final-stage">
+
+
+        <div
+            id="finalMessage"
+            class="final-message">
+
+
+            <span class="small">
+
+                Wait...
+
+            </span>
+
+
+            There is one last thing... ✨
+
+
+            <br><br>
+
+
+            <button
+                class="action-btn"
+                onclick="startFinalReveal()">
+
+                OPEN THE FINAL SURPRISE 🎁
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <button
+        class="back-btn"
+        onclick="openPage('menuPage')">
+
+        ← BACK TO MENU
+
+    </button>
+
+</section>
+
+
+
+<!-- =========================================================
+     REWARD PAGE
+========================================================= -->
+
+<section
+    id="rewardPage"
+    class="page">
+
+
+    <h1 class="reward-title">
+
+        🎉 YOU WON! 🎉
+
+    </h1>
+
+
+    <div class="reward-box">
+
+
+        <h2>
+
+            🎁 YOUR BIRTHDAY REWARD
+
+        </h2>
+
+
+        <img
+            src="brother-reward.jpeg"
+            alt="Birthday reward photo">
+
+
+        <p style="
+            margin-top:22px;
+            font-size:22px;
+            line-height:1.6;
+        ">
+
+            ❤️
+
+            You completed the Memory Game!
+
+            <br>
+
+            Happy Birthday Bhayya!
+
+            🎂🎉
+
+        </p>
+
+
+    </div>
+
+
+
+    <button
+        class="back-btn"
+        onclick="openPage('menuPage')">
+
+        ← BACK TO MENU
+
+    </button>
+
+</section>
+
+
+
+<!-- =========================================================
+     OPTIONAL MUSIC
+========================================================= -->
+
+<audio
+    id="birthdayMusic"
+    loop>
+
+    <source
+        src="birthday.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+
+<script>
+
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+const SECRET_PASSWORD = "anjoom is the best";
+
+const birthDate =
+    new Date(
+        2003,
+        8,
+        21,
+        0,
+        0,
+        0
+    );
+
+
+/* =========================================================
+   PAGE NAVIGATION
+========================================================= */
+
+function openPage(id){
+
+    document
+        .querySelectorAll(".page")
+        .forEach(
+            page =>
+                page.classList.remove("active")
+        );
+
+
+    const page =
+        document.getElementById(id);
+
+
+    if(!page){
+        return;
+    }
+
+
+    page.classList.add("active");
+
+
+    window.scrollTo(
+        0,
+        0
+    );
+
+
+    if(id === "gamePage"){
+        startGame();
+    }
+
+
+    if(id === "secretPage"){
+        resetSecret();
+    }
+
+
+    if(id === "factsPage"){
+        startFacts();
+    }
+
+
+    if(id === "finalPage"){
+        resetFinal();
+    }
+
+}
+
+
+/* =========================================================
+   DON'T CLICK
+========================================================= */
+
+let dontClicks = 0;
+
+
+function dontClick(){
+
+    const button =
+        document.getElementById(
+            "dontClick"
+        );
+
+
+    dontClicks++;
+
+
+    button.classList.remove(
+        "shake"
+    );
+
+
+    void button.offsetWidth;
+
+
+    button.classList.add(
+        "shake"
+    );
+
+
+    const x =
+        Math.max(
+            10,
+            Math.random() *
+            (
+                window.innerWidth -
+                button.offsetWidth -
+                20
+            )
+        );
+
+
+    const y =
+        Math.max(
+            10,
+            Math.random() *
+            (
+                window.innerHeight -
+                button.offsetHeight -
+                20
+            )
+        );
+
+
+    button.style.left =
+        x + "px";
+
+
+    button.style.top =
+        y + "px";
+
+
+    button.style.right =
+        "auto";
+
+
+    button.style.bottom =
+        "auto";
+
+
+    if(dontClicks >= 3){
+
+        showToast(
+            "🤣 STILL TRYING?!"
+        );
+
+    }else{
+
+        showToast(
+            "😂 I TOLD YOU NOT TO CLICK!"
+        );
+
+    }
+
+
+    fireworks(
+        x + button.offsetWidth / 2,
+        y + button.offsetHeight / 2
+    );
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer;
+
+
+function showToast(msg){
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+
+    toast.textContent =
+        msg;
+
+
+    toast.classList.add(
+        "show"
+    );
+
+
+    clearTimeout(
+        toastTimer
+    );
+
+
+    toastTimer =
+        setTimeout(
+            () => {
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            2200
+        );
+
+}
+
+
+/* =========================================================
+   FIREWORKS
+========================================================= */
+
+function fireworks(
+    cx,
+    cy
+){
+
+    for(
+        let i = 0;
+        i < 45;
+        i++
+    ){
+
+        const particle =
+            document.createElement(
+                "div"
+            );
+
+
+        particle.className =
+            "firework";
+
+
+        particle.style.left =
+            cx + "px";
+
+
+        particle.style.top =
+            cy + "px";
+
+
+        const angle =
+            Math.random() *
+            Math.PI *
+            2;
+
+
+        const distance =
+            70 +
+            Math.random() *
+            180;
+
+
+        particle.style.setProperty(
+            "--tx",
+            Math.cos(angle) *
+            distance +
+            "px"
+        );
+
+
+        particle.style.setProperty(
+            "--ty",
+            Math.sin(angle) *
+            distance +
+            "px"
+        );
+
+
+        document.body.appendChild(
+            particle
+        );
+
+
+        setTimeout(
+            () =>
+                particle.remove(),
+            1300
+        );
+
+    }
+
+}
+
+
+function bigFireworks(){
+
+    for(
+        let i = 0;
+        i < 6;
+        i++
+    ){
+
+        setTimeout(
+            () => {
+
+                fireworks(
+                    Math.random() *
+                    window.innerWidth,
+
+                    Math.random() *
+                    window.innerHeight *
+                    .7
+                );
+
+            },
+
+            i * 300
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   MEMORY GAME
+========================================================= */
+
+const symbols = [
+
+    "🎂","🎂",
+    "🎁","🎁",
+    "❤️","❤️",
+    "🎉","🎉",
+    "🥳","🥳",
+    "⭐","⭐",
+    "🎈","🎈",
+    "🎮","🎮"
+
+];
+
+
+let first = null;
+
+let second = null;
+
+let lock = false;
+
+let matches = 0;
+
+let moves = 0;
+
+
+function startGame(){
+
+    const board =
+        document.getElementById(
+            "gameBoard"
+        );
+
+
+    const status =
+        document.getElementById(
+            "gameStatus"
+        );
+
+
+    const move =
+        document.getElementById(
+            "movesCounter"
+        );
+
+
+    const message =
+        document.getElementById(
+            "gameMessage"
+        );
+
+
+    board.innerHTML = "";
+
+
+    first = null;
+
+    second = null;
+
+    lock = false;
+
+    matches = 0;
+
+    moves = 0;
+
+
+    status.textContent =
+        "Matches: 0 / 8";
+
+
+    move.textContent =
+        "Moves: 0";
+
+
+    message.textContent =
+        "Tap any card to begin! 👆";
+
+
+    const shuffled =
+        [
+            ...symbols
+        ].sort(
+            () =>
+                Math.random() -
+                .5
+        );
+
+
+    shuffled.forEach(
+        symbol => {
+
+
+            const card =
+                document.createElement(
+                    "button"
+                );
+
+
+            card.className =
+                "memory-card";
+
+
+            card.innerHTML = `
+
+                <div class="memory-inner">
+
+                    <div class="memory-front">
+                        ?
+                    </div>
+
+                    <div class="memory-back">
+                        ${symbol}
+                    </div>
+
+                </div>
+
+            `;
+
+
+            card.dataset.symbol =
+                symbol;
+
+
+            card.addEventListener(
+                "click",
+                () =>
+                    chooseCard(card)
+            );
+
+
+            board.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+
+function chooseCard(card){
+
+    if(
+        lock ||
+        card === first ||
+        card.classList.contains(
+            "matched"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    card.classList.add(
+        "flipped"
+    );
+
+
+    if(!first){
+
+        first = card;
+
+        return;
+
+    }
+
+
+    second = card;
+
+
+    moves++;
+
+
+    document.getElementById(
+        "movesCounter"
+    ).textContent =
+        "Moves: " + moves;
+
+
+    checkPair();
+
+}
+
+
+function checkPair(){
+
+    if(
+        first.dataset.symbol ===
+        second.dataset.symbol
+    ){
+
+        first.classList.add(
+            "matched"
+        );
+
+
+        second.classList.add(
+            "matched"
+        );
+
+
+        matches++;
+
+
+        document.getElementById(
+            "gameStatus"
+        ).textContent =
+            "Matches: " +
+            matches +
+            " / 8";
+
+
+        document.getElementById(
+            "gameMessage"
+        ).textContent =
+            "✨ Match!";
+
+
+        first = null;
+
+        second = null;
+
+
+        if(matches === 8){
+
+            document.getElementById(
+                "gameMessage"
+            ).textContent =
+                "🎉 YOU WON! Reward unlocked!";
+
+
+            bigFireworks();
+
+
+            setTimeout(
+                () =>
+                    openPage(
+                        "rewardPage"
+                    ),
+                1600
+            );
+
+        }
+
+    }else{
+
+        lock = true;
+
+
+        document.getElementById(
+            "gameMessage"
+        ).textContent =
+            "Try again! 😊";
+
+
+        setTimeout(
+            () => {
+
+                first.classList.remove(
+                    "flipped"
+                );
+
+
+                second.classList.remove(
+                    "flipped"
+                );
+
+
+                first = null;
+
+                second = null;
+
+                lock = false;
+
+            },
+
+            800
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   LIVE AGE COUNTER
+   YEARS + MONTHS + DAYS + MINUTES + SECONDS
+========================================================= */
+
+function updateCounter(){
+
+    const now =
+        new Date();
+
+
+    let years =
+        now.getFullYear() -
+        birthDate.getFullYear();
+
+
+    let anchor =
+        new Date(
+
+            now.getFullYear(),
+
+            birthDate.getMonth(),
+
+            birthDate.getDate(),
+
+            birthDate.getHours(),
+
+            birthDate.getMinutes(),
+
+            birthDate.getSeconds()
+
+        );
+
+
+    if(now < anchor){
+
+        years--;
+
+
+        anchor =
+            new Date(
+
+                now.getFullYear() - 1,
+
+                birthDate.getMonth(),
+
+                birthDate.getDate(),
+
+                birthDate.getHours(),
+
+                birthDate.getMinutes(),
+
+                birthDate.getSeconds()
+
+            );
+
+    }
+
+
+    let months = 0;
+
+    let temp =
+        new Date(anchor);
+
+
+    while(true){
+
+        const next =
+            new Date(
+
+                temp.getFullYear(),
+
+                temp.getMonth() + 1,
+
+                temp.getDate(),
+
+                temp.getHours(),
+
+                temp.getMinutes(),
+
+                temp.getSeconds()
+
+            );
+
+
+        if(next > now){
+            break;
+        }
+
+
+        months++;
+
+        temp = next;
+
+    }
+
+
+    const difference =
+        now - temp;
+
+
+    const dayMs =
+        86400000;
+
+
+    const minuteMs =
+        60000;
+
+
+    const secondMs =
+        1000;
+
+
+    const days =
+        Math.floor(
+            difference /
+            dayMs
+        );
+
+
+    const minutes =
+        Math.floor(
+            (
+                difference %
+                dayMs
+            ) /
+            minuteMs
+        );
+
+
+    const seconds =
+        Math.floor(
+            (
+                difference %
+                minuteMs
+            ) /
+            secondMs
+        );
+
+
+    document.getElementById(
+        "years"
+    ).textContent =
+        years;
+
+
+    document.getElementById(
+        "months"
+    ).textContent =
+        months;
+
+
+    document.getElementById(
+        "days"
+    ).textContent =
+        days;
+
+
+    document.getElementById(
+        "minutes"
+    ).textContent =
+        minutes;
+
+
+    document.getElementById(
+        "seconds"
+    ).textContent =
+        seconds;
+
+}
+
+
+updateCounter();
+
+
+setInterval(
+    updateCounter,
+    1000
+);
+
+
+/* =========================================================
+   DO YOU KNOW
+   ONE BY ONE ANIMATION
+========================================================= */
+
+let factTimer = null;
+
+
+function startFacts(){
+
+    clearTimeout(
+        factTimer
+    );
+
+
+    const lines =
+        document.querySelectorAll(
+            "#factsPage .fact-line"
+        );
+
+
+    const progress =
+        document.getElementById(
+            "factProgress"
+        );
+
+
+    /*
+       Hide everything again
+    */
+
+    lines.forEach(
+        line =>
+            line.classList.remove(
+                "visible"
+            )
+    );
+
+
+    progress.textContent =
+        "";
+
+
+    let index = 0;
+
+
+    /*
+       Reveal one line at a time
+    */
+
+    function revealNext(){
+
+        /*
+           Finished
+        */
+
+        if(
+            index >=
+            lines.length
+        ){
+
+            progress.textContent =
+                "✨ End of the story ✨";
+
+            return;
+
+        }
+
+
+        /*
+           Show current line
+        */
+
+        lines[index].classList.add(
+            "visible"
+        );
+
+
+        progress.textContent =
+            (
+                index + 1
+            ) +
+            " / " +
+            lines.length;
+
+
+        index++;
+
+
+        /*
+           Wait before next line
+        */
+
+        factTimer =
+            setTimeout(
+                revealNext,
+                1100
+            );
+
+    }
+
+
+    /*
+       First line delay
+    */
+
+    factTimer =
+        setTimeout(
+            revealNext,
+            500
+        );
+
+}
+
+
+/* =========================================================
+   SECRET MESSAGE
+========================================================= */
+
+function resetSecret(){
+
+    document.getElementById(
+        "passwordSection"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "secretMessage"
+    ).classList.remove(
+        "show"
+    );
+
+
+    document.getElementById(
+        "passwordInput"
+    ).value =
+        "";
+
+
+    document.getElementById(
+        "passwordError"
+    ).textContent =
+        "";
+
+}
+
+
+function unlockSecret(){
+
+    const entered =
+        document.getElementById(
+            "passwordInput"
+        ).value.trim();
+
+
+    const error =
+        document.getElementById(
+            "passwordError"
+        );
+
+
+    if(
+        entered.toUpperCase() ===
+        SECRET_PASSWORD.toUpperCase()
+    ){
+
+        document.getElementById(
+            "passwordSection"
+        ).style.display =
+            "none";
+
+
+        document.getElementById(
+            "secretMessage"
+        ).classList.add(
+            "show"
+        );
+
+
+        bigFireworks();
+
+    }else{
+
+        error.textContent =
+            "❌ Wrong password. Try again!";
+
+    }
+
+}
+
+
+document.getElementById(
+    "passwordInput"
+).addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key ===
+            "Enter"
+        ){
+
+            unlockSecret();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   FINAL SURPRISE
+========================================================= */
+
+function resetFinal(){
+
+    document.getElementById(
+        "finalMessage"
+    ).innerHTML = `
+
+        <span class="small">
+            Wait...
+        </span>
+
+        There is one last thing... ✨
+
+        <br><br>
+
+        <button
+            class="action-btn"
+            onclick="startFinalReveal()">
+
+            OPEN THE FINAL SURPRISE 🎁
+
+        </button>
+
+    `;
+
+}
+
+
+function startFinalReveal(){
+
+    const box =
+        document.getElementById(
+            "finalMessage"
+        );
+
+
+    /*
+       Stage 1
+    */
+
+    box.innerHTML = `
+
+        <span class="small">
+            WAIT...
+        </span>
+
+    `;
+
+
+    /*
+       Stage 2
+    */
+
+    setTimeout(
+        () => {
+
+            box.innerHTML = `
+
+                <span class="small">
+                    There is one last thing...
+                </span>
+
+                <span
+                    style="
+                        font-size:70px;
+                    ">
+
+                    ✨
+
+                </span>
+
+            `;
+
+        },
+
+        1600
+    );
+
+
+    /*
+       Date
+    */
+
+    setTimeout(
+        () => {
+
+            box.innerHTML = `
+
+                <span class="small">
+                    21 • 09 • 2003
+                </span>
+
+            `;
+
+        },
+
+        3200
+    );
+
+
+    setTimeout(
+        bigFireworks,
+        3800
+    );
+
+
+    /*
+       Born
+    */
+
+    setTimeout(
+        () => {
+
+            box.innerHTML = `
+
+                <span class="small">
+                    A BOY WAS BORN... 🎂
+                </span>
+
+            `;
+
+        },
+
+        4800
+    );
+
+
+    /*
+       Name
+    */
+
+    setTimeout(
+        () => {
+
+            box.innerHTML = `
+
+                <span class="small">
+                    HIS NAME WAS
+                </span>
+
+                <span class="name">
+                    S.M ALTHAF JAN
+                </span>
+
+            `;
+
+        },
+
+        6500
+    );
+
+
+    /*
+       Today
+    */
+
+    setTimeout(
+        () => {
+
+            box.innerHTML = `
+
+                <span class="small">
+                    AND TODAY...
+                </span>
+
+                <span>
+                    23 YEARS OF MEMORIES LATER...
+                </span>
+
+            `;
+
+        },
+
+        8300
+    );
+
+
+    /*
+       Final
+    */
+
+    setTimeout(
+        () => {
+
+            box.innerHTML = `
+
+                <span class="small">
+                    🎂 ✨ 🎉
+                </span>
+
+                <span class="birthday">
+                    HAPPY BIRTHDAY
+                </span>
+
+                <span class="birthday">
+                    BHAYYA ❤️
+                </span>
+
+                <br>
+
+                <span>
+                    🎉 ✨ ❤️ 🎂
+                </span>
+
+            `;
+
+
+            bigFireworks();
+
+
+            setTimeout(
+                bigFireworks,
+                1000
+            );
+
+
+            setTimeout(
+                bigFireworks,
+                2200
+            );
+
+        },
+
+        10500
+    );
+
+}
+
+
+/* =========================================================
+   MUSIC
+========================================================= */
+
+let playing = false;
+
+
+const audio =
+    document.getElementById(
+        "birthdayMusic"
+    );
+
+
+function toggleMusic(){
+
+    const button =
+        document.getElementById(
+            "musicButton"
+        );
+
+
+    if(!playing){
+
+        audio.play()
+            .then(
+                () => {
+
+                    playing = true;
+
+                    button.textContent =
+                        "⏸ Stop Birthday Music";
+
+                }
+            )
+            .catch(
+                () => {
+
+                    showToast(
+                        "Add birthday.mp3 to the same folder to play music 🎵"
+                    );
+
+                }
+            );
+
+    }else{
+
+        audio.pause();
+
+        playing = false;
+
+        button.textContent =
+            "🎵 Play Birthday Music";
+
+    }
+
+}
+
+
+/* =========================================================
+   START GAME
+========================================================= */
+
+startGame();
+
+</script>
+
+</body>
+</html>

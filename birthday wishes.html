@@ -1,0 +1,1684 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Bhayya ❤️</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#050505;
+    color:white;
+    overflow-x:hidden;
+}
+
+.page{
+    display:none;
+    min-height:100vh;
+    padding:30px 20px;
+    text-align:center;
+    position:relative;
+    animation:pageIn .6s ease;
+}
+
+.page.active{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+@keyframes pageIn{
+    from{
+        opacity:0;
+        transform:scale(.95);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+h1{
+    font-size:clamp(35px,8vw,75px);
+    margin-bottom:20px;
+    color:#ff3158;
+    text-shadow:0 0 20px #ff1744;
+}
+
+h2{
+    font-size:clamp(28px,6vw,50px);
+    margin-bottom:20px;
+    color:#ff416c;
+}
+
+h3{
+    margin:12px 0;
+}
+
+p{
+    max-width:700px;
+    line-height:1.7;
+    font-size:18px;
+    margin:10px auto;
+}
+
+.primary-btn,
+.menu-btn,
+.back-btn,
+.game-btn{
+    border:none;
+    text-decoration:none;
+    cursor:pointer;
+    color:white;
+    display:inline-block;
+    padding:15px 28px;
+    margin:10px;
+    border-radius:30px;
+    font-size:17px;
+    font-weight:bold;
+    background:linear-gradient(135deg,#ff1744,#9c27b0);
+    box-shadow:0 0 20px rgba(255,23,68,.5);
+    transition:.3s;
+}
+
+.primary-btn:hover,
+.menu-btn:hover,
+.back-btn:hover,
+.game-btn:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 30px #ff1744;
+}
+
+.back-btn{
+    position:absolute;
+    top:20px;
+    left:20px;
+    font-size:14px;
+    padding:10px 18px;
+}
+
+/* WELCOME */
+
+#welcomePage{
+    background:
+    radial-gradient(circle at center,#26000c 0%,#090009 45%,#000 100%);
+}
+
+.birthday-icon{
+    font-size:90px;
+    animation:bounce 1.5s infinite;
+}
+
+@keyframes bounce{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-15px)}
+}
+
+.welcome-text{
+    font-size:22px;
+    color:#ddd;
+}
+
+.dont-btn{
+    background:#111;
+    border:2px solid #ff1744;
+    color:#ff1744;
+    padding:13px 25px;
+    border-radius:25px;
+    font-weight:bold;
+    cursor:pointer;
+    position:relative;
+    margin-top:20px;
+}
+
+/* MENU */
+
+#menuPage{
+    background:linear-gradient(135deg,#090909,#18000b,#100018);
+}
+
+.menu-grid{
+    width:min(900px,100%);
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-top:25px;
+}
+
+.menu-btn{
+    min-height:130px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+}
+
+.menu-icon{
+    font-size:45px;
+    margin-bottom:10px;
+}
+
+/* SURPRISE */
+
+.surprise-grid{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:25px;
+    max-width:900px;
+}
+
+.surprise-card{
+    width:220px;
+    height:270px;
+    perspective:1000px;
+    cursor:pointer;
+}
+
+.card-inner{
+    width:100%;
+    height:100%;
+    transition:transform .7s;
+    transform-style:preserve-3d;
+    position:relative;
+}
+
+.surprise-card.flipped .card-inner{
+    transform:rotateY(180deg);
+}
+
+.card-front,
+.card-back{
+    position:absolute;
+    width:100%;
+    height:100%;
+    backface-visibility:hidden;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    padding:20px;
+    box-shadow:0 0 25px rgba(255,23,68,.35);
+}
+
+.card-front{
+    background:linear-gradient(135deg,#ff1744,#7b1fa2);
+    font-size:50px;
+}
+
+.card-back{
+    background:#171717;
+    border:2px solid #ff1744;
+    transform:rotateY(180deg);
+}
+
+.card-back p{
+    font-size:15px;
+}
+
+/* GAME */
+
+#gamePage{
+    justify-content:flex-start !important;
+    padding-top:70px;
+}
+
+.game-board{
+    width:min(600px,95%);
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin:25px auto;
+}
+
+.game-card{
+    height:100px;
+    background:linear-gradient(135deg,#25000b,#5c0020);
+    border:2px solid #ff1744;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:0;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.game-card.show{
+    font-size:38px;
+    background:#171717;
+}
+
+.game-card.matched{
+    font-size:38px;
+    background:#32103d;
+    border-color:#00ff99;
+    cursor:default;
+}
+
+#gameMessage{
+    min-height:30px;
+    color:#ffd54f;
+    font-weight:bold;
+}
+
+/* MEMORIES */
+
+#memoriesPage{
+    justify-content:flex-start !important;
+    padding-top:70px;
+}
+
+.age-box{
+    background:#151515;
+    border:2px solid #ff1744;
+    border-radius:20px;
+    padding:20px;
+    width:min(850px,95%);
+    margin:20px auto 35px;
+    box-shadow:0 0 25px rgba(255,23,68,.25);
+}
+
+.counter{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:10px;
+    margin-top:20px;
+}
+
+.time-box{
+    background:#080808;
+    border-radius:12px;
+    padding:12px 5px;
+    border:1px solid #7d1731;
+}
+
+.time-number{
+    font-size:25px;
+    color:#ff416c;
+    font-weight:bold;
+}
+
+.time-label{
+    font-size:11px;
+    color:#aaa;
+}
+
+.timeline{
+    width:min(900px,95%);
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:20px;
+}
+
+.year-card{
+    background:#141414;
+    border-radius:18px;
+    padding:15px;
+    border:1px solid #57202e;
+    transition:.3s;
+}
+
+.year-card:hover{
+    transform:translateY(-8px);
+    border-color:#ff1744;
+    box-shadow:0 0 20px rgba(255,23,68,.4);
+}
+
+.year-card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    border-radius:12px;
+    display:block;
+}
+
+/* SECRET */
+
+.secret-box{
+    width:min(800px,95%);
+    padding:40px 25px;
+    border-radius:25px;
+    background:linear-gradient(135deg,#170006,#21001f);
+    border:2px solid #ff1744;
+    box-shadow:0 0 40px rgba(255,23,68,.4);
+}
+
+.secret-big{
+    font-size:clamp(25px,5vw,48px);
+    color:#ff4f75;
+    line-height:1.4;
+}
+
+/* FACTS */
+
+.fact-box{
+    width:min(750px,95%);
+    min-height:280px;
+    padding:35px;
+    background:#121212;
+    border-radius:25px;
+    border:2px solid #ff1744;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+}
+
+.fact-text{
+    font-size:clamp(22px,4vw,35px);
+    color:#ffd1d9;
+}
+
+/* FINAL */
+
+#finalPage{
+    background:
+    radial-gradient(circle,#31000c,#090009 50%,#000);
+}
+
+.final-line{
+    opacity:0;
+    transform:scale(.7);
+    animation:reveal 1s forwards;
+    margin:12px;
+}
+
+@keyframes reveal{
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.final-date{
+    font-size:35px;
+    color:#ffd54f;
+}
+
+.final-name{
+    font-size:clamp(35px,8vw,75px);
+    color:#ff1744;
+    text-shadow:0 0 30px #ff1744;
+}
+
+.final-birthday{
+    font-size:clamp(45px,10vw,100px);
+    color:#ff416c;
+    font-weight:bold;
+    text-shadow:0 0 40px #ff1744;
+}
+
+/* REWARD */
+
+.reward-img{
+    width:min(500px,90%);
+    max-height:500px;
+    object-fit:cover;
+    border-radius:25px;
+    border:3px solid #ff1744;
+    box-shadow:0 0 40px rgba(255,23,68,.5);
+}
+
+/* PASSWORD */
+
+.popup{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.85);
+    z-index:1000;
+    align-items:center;
+    justify-content:center;
+}
+
+.popup.show{
+    display:flex;
+}
+
+.popup-box{
+    background:#151515;
+    border:2px solid #ff1744;
+    padding:35px;
+    width:min(400px,90%);
+    border-radius:25px;
+}
+
+.popup-box input{
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    border:1px solid #ff1744;
+    background:#050505;
+    color:white;
+    margin:15px 0;
+    font-size:17px;
+    outline:none;
+}
+
+#error{
+    color:#ff416c;
+    min-height:25px;
+}
+
+/* FIREWORKS */
+
+.firework{
+    position:fixed;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:#fff;
+    pointer-events:none;
+    z-index:9999;
+    animation:explode 1s forwards;
+}
+
+@keyframes explode{
+    0%{
+        transform:scale(1);
+        opacity:1;
+    }
+
+    100%{
+        transform:
+        translate(
+            calc((var(--x) - 50px) * 1px),
+            calc((var(--y) - 50px) * 1px)
+        )
+        scale(.2);
+        opacity:0;
+    }
+}
+
+@media(max-width:600px){
+
+    .counter{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .game-card{
+        height:75px;
+    }
+
+    .game-board{
+        gap:7px;
+    }
+
+    .timeline{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .year-card img{
+        height:150px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- =====================================================
+     PAGE 1 - WELCOME
+===================================================== -->
+
+<section id="welcomePage" class="page active">
+
+    <div class="birthday-icon">🎂</div>
+
+    <h1>WELCOME BHAYYA! ❤️</h1>
+
+    <p class="welcome-text">
+        A special little website made just for you...
+        <br>
+        because one birthday is not enough to celebrate you! 🎉
+    </p>
+
+    <button class="dont-btn" id="dontClick">
+        🚫 DON'T CLICK
+    </button>
+
+    <br>
+
+    <button class="primary-btn" onclick="openPage('menuPage')">
+        ✨ TAP TO ENTER ✨
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     MAIN MENU
+===================================================== -->
+
+<section id="menuPage" class="page">
+
+    <h2>🎉 BHAYYA'S BIRTHDAY WORLD 🎉</h2>
+
+    <p>Choose your surprise! ❤️</p>
+
+    <div class="menu-grid">
+
+        <button class="menu-btn" onclick="openPage('surprisePage')">
+            <span class="menu-icon">🎁</span>
+            Pick a Surprise
+        </button>
+
+        <button class="menu-btn" onclick="openPage('gamePage')">
+            <span class="menu-icon">🎮</span>
+            Memory Game
+        </button>
+
+        <button class="menu-btn" onclick="openPage('memoriesPage')">
+            <span class="menu-icon">📸</span>
+            1st Year → 23 Years
+        </button>
+
+        <button class="menu-btn" onclick="openPassword()">
+            <span class="menu-icon">🔐</span>
+            Secret Message
+        </button>
+
+        <button class="menu-btn" onclick="openPage('factsPage')">
+            <span class="menu-icon">🤔</span>
+            Do You Know?
+        </button>
+
+        <button class="menu-btn" onclick="openPage('finalPage')">
+            <span class="menu-icon">🎆</span>
+            Final Surprise
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PICK A SURPRISE
+===================================================== -->
+
+<section id="surprisePage" class="page">
+
+    <button class="back-btn" onclick="openPage('menuPage')">
+        ← MENU
+    </button>
+
+    <h2>🎁 PICK A SURPRISE</h2>
+
+    <p>Click a card and see what is hiding inside! 👀</p>
+
+    <div class="surprise-grid">
+
+        <div class="surprise-card" onclick="flipCard(this)">
+
+            <div class="card-inner">
+
+                <div class="card-front">
+                    🎁
+                    <small>CLICK ME</small>
+                </div>
+
+                <div class="card-back">
+                    <h3>😂 FUNNY</h3>
+
+                    <p>
+                        Congratulations!
+                        You have officially survived another
+                        year of annoying your family. 😂
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="surprise-card" onclick="flipCard(this)">
+
+            <div class="card-inner">
+
+                <div class="card-front">
+                    ❤️
+                    <small>CLICK ME</small>
+                </div>
+
+                <div class="card-back">
+
+                    <h3>❤️ SPECIAL</h3>
+
+                    <p>
+                        No matter how much we fight,
+                        you will always be my Bhayya. ❤️
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="surprise-card" onclick="flipCard(this)">
+
+            <div class="card-inner">
+
+                <div class="card-front">
+                    🔥
+                    <small>CLICK ME</small>
+                </div>
+
+                <div class="card-back">
+
+                    <h3>🔥 SECRET</h3>
+
+                    <p>
+                        You are officially getting older...
+                        but don't worry,
+                        we won't tell anyone. 😂
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MEMORY GAME
+===================================================== -->
+
+<section id="gamePage" class="page">
+
+    <button class="back-btn" onclick="openPage('menuPage')">
+        ← MENU
+    </button>
+
+    <h2>🎮 MEMORY GAME</h2>
+
+    <p>
+        Match all the pairs to unlock your reward! 🎁
+    </p>
+
+    <div id="gameMessage"></div>
+
+    <div class="game-board" id="gameBoard"></div>
+
+    <button class="game-btn" onclick="startGame()">
+        🔄 RESET GAME
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     MEMORIES - 1 TO 23 YEARS
+===================================================== -->
+
+<section id="memoriesPage" class="page">
+
+    <button class="back-btn" onclick="openPage('menuPage')">
+        ← MENU
+    </button>
+
+    <h2>📸 1ST YEAR → 23 YEARS</h2>
+
+    <div class="age-box">
+
+        <h3>From the day you were born... ❤️</h3>
+
+        <p>
+            You were born on
+            <b>21st September 2003</b>
+        </p>
+
+        <div class="counter">
+
+            <div class="time-box">
+                <div class="time-number" id="years">0</div>
+                <div class="time-label">YEARS</div>
+            </div>
+
+            <div class="time-box">
+                <div class="time-number" id="months">0</div>
+                <div class="time-label">MONTHS</div>
+            </div>
+
+            <div class="time-box">
+                <div class="time-number" id="days">0</div>
+                <div class="time-label">DAYS</div>
+            </div>
+
+            <div class="time-box">
+                <div class="time-number" id="hours">0</div>
+                <div class="time-label">HOURS</div>
+            </div>
+
+            <div class="time-box">
+                <div class="time-number" id="minutes">0</div>
+                <div class="time-label">MINUTES</div>
+            </div>
+
+            <div class="time-box">
+                <div class="time-number" id="seconds">0</div>
+                <div class="time-label">SECONDS</div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ALL 23 PHOTOS ARE DIRECTLY HERE -->
+
+    <div class="timeline">
+
+        <div class="year-card">
+            <h3>YEAR 1 ❤️</h3>
+            <img src="photo1.jpg" alt="Bhayya Year 1">
+            <p>Another beautiful year of memories ❤️</p>
+        </div>
+
+        <div class="year-card">
+            <h3>YEAR 2 ❤️</h3>
+            <img src="photo2.jpg" alt="Bhayya Year 2">
+            <p>Another beautiful year of memories ❤️</p>
+        </div>
+
+        <div class="year-card">
+            <h3>YEAR 3 ❤️</h3>
+            <img src="photo3.jpg" alt="Bhayya Year 3">
+            <p>Another beautiful year of memories ❤️</p>
+        </div>
+
+        <div class="year-card">
+            <h3>YEAR 4 ❤️</h3>
+            <img src="photo4.jpg" alt="Bhayya Year 4">
+            <p>Another beautiful year of memories ❤️</p>
+        </div>
+
+        <div class="year-card">
+            <h3>YEAR 5 ❤️</h3>
+            <img src="photo5.jpg" alt="Bhayya Year 5">
+            <p>Another beautiful year of memories ❤️</p>
+        </div>
+
+        <div class="year-card">
+            <h3>YEAR 6 ❤️</h3>
+            <img src="photo6.jpg" alt="Bhayya Year 6">
+            <p>Another beautiful year of memories ❤️</p>
+        </div>
+
+        <div class="year-card">
+            <h3>YEAR 7 ❤️</h3>
+            <img src="photo7.jpg" alt="Bhayya Year 7">
+            <p>Another beautiful year of memories ❤️</p>
+        </div>
+
+        <div class="year-card">
+            <h3>YEAR 8 ❤️</h3>
+            <img src="photo8.jpg" alt="Bhayya Year 8">
+            <p>Another beautiful year of memories ❤️</p>
+        </div>
+
+        <div class="year-card">
+            <h3>YEAR 9 ❤️</h3>
+            <img src="photo9.jpg" alt="Bhayya Year 9">
+            <p>Another beautiful year of memories ❤️</p>
+        </div>
+
+        <div class="year-card">
+            <h3>YEAR 10 ❤️</h3>
+            <img src="photo10.jpg" alt="Bhayya Year 10">
+            <p>Another beautiful year of memories ❤️</p>
+        </div>
+
+        <div class="year-card">
+            <h3>YEAR 11 ❤️</h3>
+            <img src="photo11.jpg" alt="Bhayya Year 11">
+            <p>Another beautiful year of memories ❤️</p>
+        </div>
+
+        <div class="year-card">
+            <h3>YEAR 12 ❤️</h3>
+            <img src="photo12.jpg" alt="Bhayya Year 12">
+            <p>Another beautiful year of memories ❤️</p>
+        </div>
+
+        <div class="year-card">
+            <h3>YEAR 13 ❤️</h3>
+            <img src="photo13.jpg" alt="Bhayya Year 13">
+            <p>Another beautiful year of memories ❤️</p>
+        </div>
+
+        <div class="year-card">
+            <h3>YEAR 14 ❤️</h3>
+            <img src="photo14.jpg" alt="Bhayya Year 14">
+            <p>Another beautiful year of memories ❤️</p>
+        </div>
+
+        <div class="year-card">
+            <h3>YEAR 15 ❤️</h3>
+            <img src="photo15.jpg" alt="Bhayya Year 15">
+            <p>Another beautiful year of memories ❤️</p>
+        </div>
+
+        <div class="year-card">
+            <h3>YEAR 16 ❤️</h3>
+            <img src="photo16.jpg" alt="Bhayya Year 16">
+            <p>Another beautiful year of memories ❤️</p>
+        </div>
+
+        <div class="year-card">
+            <h3>YEAR 17 ❤️</h3>
+            <img src="photo17.jpg" alt="Bhayya Year 17">
+            <p>Another beautiful year of memories ❤️</p>
+        </div>
+
+        <div class="year-card">
+            <h3>YEAR 18 ❤️</h3>
+            <img src="photo18.jpg" alt="Bhayya Year 18">
+            <p>Another beautiful year of memories ❤️</p>
+        </div>
+
+        <div class="year-card">
+            <h3>YEAR 19 ❤️</h3>
+            <img src="photo19.jpg" alt="Bhayya Year 19">
+            <p>Another beautiful year of memories ❤️</p>
+        </div>
+
+        <div class="year-card">
+            <h3>YEAR 20 ❤️</h3>
+            <img src="photo20.jpg" alt="Bhayya Year 20">
+            <p>Another beautiful year of memories ❤️</p>
+        </div>
+
+        <div class="year-card">
+            <h3>YEAR 21 ❤️</h3>
+            <img src="photo21.jpg" alt="Bhayya Year 21">
+            <p>Another beautiful year of memories ❤️</p>
+        </div>
+
+        <div class="year-card">
+            <h3>YEAR 22 ❤️</h3>
+            <img src="photo22.jpg" alt="Bhayya Year 22">
+            <p>Another beautiful year of memories ❤️</p>
+        </div>
+
+        <div class="year-card">
+            <h3>YEAR 23 ❤️</h3>
+            <img src="photo23.jpg" alt="Bhayya Year 23">
+            <p>
+                23 years of memories and still counting... 🎉
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SECRET MESSAGE
+===================================================== -->
+
+<section id="secretPage" class="page">
+
+    <button class="back-btn" onclick="openPage('menuPage')">
+        ← MENU
+    </button>
+
+    <div class="secret-box">
+
+        <div style="font-size:70px;">❤️</div>
+
+        <h2>MY SECRET MESSAGE</h2>
+
+        <!-- CHANGE YOUR SECRET MESSAGE HERE -->
+
+        <div class="secret-big">
+
+            You are not just my brother,
+            you are one of the most special
+            people in my life. ❤️
+
+            <br><br>
+
+            Thank you for all the memories,
+            the laughter, the fights,
+            the teasing and every little moment.
+
+            <br><br>
+
+            No matter how much we fight,
+            you will always be my Bhayya. ❤️
+
+            <br><br>
+
+            Happy Birthday once again! 🎂
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     DO YOU KNOW
+===================================================== -->
+
+<section id="factsPage" class="page">
+
+    <button class="back-btn" onclick="openPage('menuPage')">
+        ← MENU
+    </button>
+
+    <h2>🤔 LET'S KNOW SOME FACTS</h2>
+
+    <div class="fact-box">
+
+        <div class="fact-text" id="factText">
+            DO YOU KNOW?
+        </div>
+
+        <button class="primary-btn" onclick="nextFact()">
+            NEXT ➜
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FINAL SURPRISE
+===================================================== -->
+
+<section id="finalPage" class="page">
+
+    <div id="finalContent"></div>
+
+    <button
+        id="finalBack"
+        class="back-btn"
+        style="display:none;"
+        onclick="openPage('menuPage')">
+
+        ← MENU
+
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     PASSWORD POPUP
+===================================================== -->
+
+<div class="popup" id="passwordPopup">
+
+    <div class="popup-box">
+
+        <h2>🔐 SECRET MESSAGE</h2>
+
+        <p>
+            Enter the special password to unlock it ❤️
+        </p>
+
+        <input
+            type="password"
+            id="passwordInput"
+            placeholder="Enter password">
+
+        <div id="error"></div>
+
+        <button class="primary-btn" onclick="checkPassword()">
+            🔓 UNLOCK
+        </button>
+
+        <button
+            class="back-btn"
+            style="position:static;"
+            onclick="closePassword()">
+
+            CANCEL
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     REWARD PAGE
+===================================================== -->
+
+<section id="rewardPage" class="page">
+
+    <h2>🎁 YOU WON!</h2>
+
+    <p>
+        You completed the memory game! ❤️
+    </p>
+
+    <!-- REWARD PHOTO -->
+
+    <img
+        src="brother-reward.jpg"
+        class="reward-img"
+        alt="Special Brother Memory">
+
+    <h2>📸 YOUR SPECIAL REWARD</h2>
+
+    <p>
+        A special memory just for you. ❤️
+    </p>
+
+    <button class="primary-btn" onclick="openPage('menuPage')">
+        CONTINUE 🎉
+    </button>
+
+</section>
+
+
+<script>
+
+/* =====================================================
+   PAGE SWITCHING
+===================================================== */
+
+function openPage(pageId){
+
+    document.querySelectorAll(".page").forEach(function(page){
+        page.classList.remove("active");
+    });
+
+    const selectedPage =
+        document.getElementById(pageId);
+
+    if(selectedPage){
+
+        selectedPage.classList.add("active");
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+    }
+
+    if(pageId === "gamePage"){
+        startGame();
+    }
+
+    if(pageId === "finalPage"){
+        startFinalReveal();
+    }
+}
+
+
+/* =====================================================
+   DON'T CLICK
+===================================================== */
+
+const dontButton =
+    document.getElementById("dontClick");
+
+dontButton.addEventListener("click",function(){
+
+    dontButton.innerText =
+        "😂 I TOLD YOU NOT TO CLICK!";
+
+    dontButton.style.position =
+        "fixed";
+
+    dontButton.style.left =
+        Math.random()*70+10+"%";
+
+    dontButton.style.top =
+        Math.random()*70+10+"%";
+
+    fireworks();
+
+});
+
+
+/* =====================================================
+   FIREWORKS
+===================================================== */
+
+function fireworks(){
+
+    for(let i=0;i<45;i++){
+
+        const firework =
+            document.createElement("div");
+
+        firework.className =
+            "firework";
+
+        firework.style.left =
+            Math.random()*100+"vw";
+
+        firework.style.top =
+            Math.random()*70+"vh";
+
+        firework.style.setProperty(
+            "--x",
+            Math.random()*200-100
+        );
+
+        firework.style.setProperty(
+            "--y",
+            Math.random()*200-100
+        );
+
+        document.body.appendChild(firework);
+
+        setTimeout(function(){
+            firework.remove();
+        },1000);
+
+    }
+}
+
+
+/* =====================================================
+   SURPRISE CARDS
+===================================================== */
+
+function flipCard(card){
+
+    card.classList.toggle("flipped");
+
+}
+
+
+/* =====================================================
+   PASSWORD
+===================================================== */
+
+const SECRET_PASSWORD = "BRO2026";
+
+
+function openPassword(){
+
+    document.getElementById("passwordPopup")
+        .classList.add("show");
+
+    document.getElementById("passwordInput")
+        .value="";
+
+    document.getElementById("error")
+        .innerText="";
+
+}
+
+
+function closePassword(){
+
+    document.getElementById("passwordPopup")
+        .classList.remove("show");
+
+}
+
+
+function checkPassword(){
+
+    const entered =
+        document.getElementById("passwordInput")
+        .value;
+
+    if(entered === SECRET_PASSWORD){
+
+        closePassword();
+
+        openPage("secretPage");
+
+    }else{
+
+        document.getElementById("error")
+            .innerText =
+            "❌ Wrong password! Try again.";
+
+    }
+
+}
+
+
+/* =====================================================
+   MEMORY GAME
+===================================================== */
+
+const symbols = [
+    "🎂",
+    "❤️",
+    "🎉",
+    "🎁",
+    "⭐",
+    "😂",
+    "✨",
+    "🥳"
+];
+
+let gameCards=[];
+let firstCard=null;
+let secondCard=null;
+let lockBoard=false;
+let matchedPairs=0;
+
+
+function startGame(){
+
+    const board =
+        document.getElementById("gameBoard");
+
+    const message =
+        document.getElementById("gameMessage");
+
+    board.innerHTML="";
+
+    message.innerText="";
+
+    gameCards=[
+        ...symbols,
+        ...symbols
+    ].sort(function(){
+        return Math.random()-0.5;
+    });
+
+    firstCard=null;
+    secondCard=null;
+    lockBoard=false;
+    matchedPairs=0;
+
+
+    gameCards.forEach(function(symbol,index){
+
+        const card =
+            document.createElement("div");
+
+        card.className="game-card";
+
+        card.dataset.symbol=symbol;
+
+        card.dataset.index=index;
+
+        card.innerText=symbol;
+
+
+        card.addEventListener("click",function(){
+
+            if(
+                lockBoard ||
+                card.classList.contains("matched") ||
+                card===firstCard
+            ){
+                return;
+            }
+
+            card.classList.add("show");
+
+
+            if(!firstCard){
+
+                firstCard=card;
+
+                return;
+
+            }
+
+
+            secondCard=card;
+
+            lockBoard=true;
+
+
+            if(
+                firstCard.dataset.symbol ===
+                secondCard.dataset.symbol
+            ){
+
+                firstCard.classList.add("matched");
+
+                secondCard.classList.add("matched");
+
+                matchedPairs++;
+
+                firstCard=null;
+                secondCard=null;
+
+                lockBoard=false;
+
+
+                if(matchedPairs===symbols.length){
+
+                    message.innerText =
+                        "🎉 YOU WON! YOUR REWARD IS READY! 🎁";
+
+                    fireworks();
+
+                    setTimeout(function(){
+
+                        openPage("rewardPage");
+
+                    },1500);
+
+                }
+
+            }else{
+
+                setTimeout(function(){
+
+                    firstCard.classList.remove("show");
+
+                    secondCard.classList.remove("show");
+
+                    firstCard=null;
+
+                    secondCard=null;
+
+                    lockBoard=false;
+
+                },800);
+
+            }
+
+        });
+
+
+        board.appendChild(card);
+
+    });
+
+}
+
+
+/* =====================================================
+   AGE COUNTER
+===================================================== */
+
+const birthDate =
+    new Date(2003,8,21,0,0,0);
+
+
+function updateAge(){
+
+    const now=new Date();
+
+    let years =
+        now.getFullYear() -
+        birthDate.getFullYear();
+
+    let months =
+        now.getMonth() -
+        birthDate.getMonth();
+
+    let days =
+        now.getDate() -
+        birthDate.getDate();
+
+
+    if(days<0){
+
+        months--;
+
+        const previousMonth =
+            new Date(
+                now.getFullYear(),
+                now.getMonth(),
+                0
+            );
+
+        days += previousMonth.getDate();
+
+    }
+
+
+    if(months<0){
+
+        years--;
+
+        months+=12;
+
+    }
+
+
+    const todayMidnight =
+        new Date(
+            now.getFullYear(),
+            now.getMonth(),
+            now.getDate(),
+            0,0,0
+        );
+
+
+    const diff =
+        now.getTime() -
+        todayMidnight.getTime();
+
+
+    const hours =
+        Math.floor(
+            diff/(1000*60*60)
+        );
+
+    const minutes =
+        Math.floor(
+            diff/(1000*60)
+        )%60;
+
+    const seconds =
+        Math.floor(
+            diff/1000
+        )%60;
+
+
+    document.getElementById("years").innerText =
+        years;
+
+    document.getElementById("months").innerText =
+        months;
+
+    document.getElementById("days").innerText =
+        days;
+
+    document.getElementById("hours").innerText =
+        hours;
+
+    document.getElementById("minutes").innerText =
+        minutes;
+
+    document.getElementById("seconds").innerText =
+        seconds;
+
+}
+
+
+setInterval(updateAge,1000);
+
+updateAge();
+
+
+/* =====================================================
+   DO YOU KNOW
+===================================================== */
+
+const facts=[
+
+    "DO YOU KNOW? 🤔",
+
+    "A boy was born on 21st September 2003. 🎂",
+
+    "He was named S.M ALTHAF JAN. ❤️",
+
+    "That day wasn't just an ordinary day... ✨",
+
+    "It was the day a special person entered this world. 🌎❤️",
+
+    "A little boy who would grow up, make countless memories, create lots of laughter, and become an important part of his family's life. 🥰",
+
+    "Years passed, and that little boy grew up...",
+
+    "But one thing never changed — ❤️",
+
+    "He is still the same person who can make everyone smile, annoy everyone at least once, and somehow make every moment memorable. 😂❤️",
+
+    "And today, we are celebrating him! 🎉",
+
+    "Happy Birthday, S.M ALTHAF JAN! 🎂🎈"
+
+];
+
+let factIndex=0;
+
+
+function nextFact(){
+
+    factIndex++;
+
+    if(factIndex>=facts.length){
+        factIndex=0;
+    }
+
+    document.getElementById("factText")
+        .innerText=facts[factIndex];
+
+}
+
+
+/* =====================================================
+   FINAL REVEAL
+===================================================== */
+
+let finalRunning=false;
+
+
+function startFinalReveal(){
+
+    if(finalRunning){
+        return;
+    }
+
+    finalRunning=true;
+
+    const container =
+        document.getElementById("finalContent");
+
+    const backButton =
+        document.getElementById("finalBack");
+
+    container.innerHTML="";
+
+    backButton.style.display="none";
+
+
+    const lines=[
+
+        "Wait...",
+
+        "There is one last thing...",
+
+        "✨",
+
+        "21 • 09 • 2003",
+
+        "A boy was born...",
+
+        "S.M ALTHAF JAN",
+
+        "And today...",
+
+        "23 years of memories later...",
+
+        "🎂",
+
+        "HAPPY BIRTHDAY",
+
+        "BHAYYA! ❤️",
+
+        "🎉 ✨ ❤️ 🎂"
+
+    ];
+
+
+    lines.forEach(function(text,index){
+
+        setTimeout(function(){
+
+            const line =
+                document.createElement("div");
+
+            line.className="final-line";
+
+            line.innerText=text;
+
+
+            if(text==="21 • 09 • 2003"){
+                line.classList.add("final-date");
+            }
+
+
+            if(text==="S.M ALTHAF JAN"){
+                line.classList.add("final-name");
+            }
+
+
+            if(
+                text==="HAPPY BIRTHDAY" ||
+                text==="BHAYYA! ❤️"
+            ){
+                line.classList.add("final-birthday");
+            }
+
+
+            container.appendChild(line);
+
+
+            if(
+                text==="A boy was born..." ||
+                text==="HAPPY BIRTHDAY" ||
+                text==="BHAYYA! ❤️"
+            ){
+
+                fireworks();
+
+            }
+
+        },index*1300);
+
+    });
+
+
+    setTimeout(function(){
+
+        backButton.style.display="block";
+
+        finalRunning=false;
+
+    },lines.length*1300+1000);
+
+}
+
+</script>
+
+</body>
+</html>
